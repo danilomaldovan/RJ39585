@@ -1,6 +1,6 @@
+import { item } from "../Item/Item";
 
-
-
+e
 export const ItemDetail = ({item}) => {
     
     return (

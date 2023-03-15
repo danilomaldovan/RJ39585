@@ -8,12 +8,12 @@ export const ItemDetailContainer = () => {
     const [item, setItem] = useState(null)
 
     const {itemId} = useParams()
-    
+    console.log(itemId)
 
 
     useEffect(() =>{
         
-        pedirProductosPorId (Number(itemId))
+        pedirProductosPorId (Number(itemId) )
             .then((resp) =>{
                 setItem(resp)
             })
@@ -22,7 +22,7 @@ export const ItemDetailContainer = () => {
 
 return(
     <div>
-        <ItemDetail item={item}/>
+        {item? <ItemDetail item={item}/>:<h1>Cargando...</h1>}
     </div>
 )
 
