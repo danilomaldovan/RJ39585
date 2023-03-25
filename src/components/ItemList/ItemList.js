@@ -8,7 +8,7 @@ export const ItemList = ( {items} ) => {
             <hr/>
             <div className='row my-5'>
                 {items.map((el) =><Item key={el.id} item={el}/>)} 
-            </div>)
+            </div>
         </div>
             
         
