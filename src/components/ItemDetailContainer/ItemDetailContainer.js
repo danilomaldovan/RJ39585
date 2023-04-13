@@ -8,7 +8,7 @@ export const ItemDetailContainer = () => {
     const [item, setItem] = useState(null)
 
     const {itemId} = useParams()
-    console.log(itemId)
+    
 
 
     useEffect(() =>{
