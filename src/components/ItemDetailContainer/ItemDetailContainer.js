@@ -1,29 +1,44 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { pedirProductosPorId } from "../../helpers/pedirDatos";
-import { ItemDetail } from "../ItemDetail/ItemDetail";
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { db } from "../../firebase/config"
+import ItemDetail from "../ItemDetail/ItemDetail"
+import { doc, getDoc } from "firebase/firestore"
+
 
 export const ItemDetailContainer = () => {
 
     const [item, setItem] = useState(null)
+    const [loading, setLoading] = useState(true)
+
 
     const {itemId} = useParams()
     
+    useEffect(() => {
+        setLoading(true)
 
-
-    useEffect(() =>{
-        
-        pedirProductosPorId (Number(itemId) )
-            .then((resp) =>{
-                setItem(resp)
+        // 1.- referencia sync
+        const docRef = doc(db, "productos", itemId)
+        // 2.- llamado async
+        getDoc(docRef)
+            .then((doc) => {
+                console.log(doc.id)
+                console.log(doc.data())
+                setItem({
+                    id: doc.id,
+                    ...doc.data()
+                })
             })
-            
-        }, [itemId])
+            .finally(() => setLoading(false))
 
-return(
-    <div>
-        {item? <ItemDetail item={item}/>:<h1>Cargando...</h1>}
-    </div>
-)
+    }, [])
 
+    return (
+        <div>
+            {
+                loading
+                    ? <h2>Cargando...</h2>
+                    : <ItemDetail item={item}/>
+            }
+        </div>
+    )
 }
