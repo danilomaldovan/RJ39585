@@ -1,8 +1,8 @@
-.header{
-    background-color: #9baddfc5;
-    
+.header {
+    background-color: #600027c5;
+
     .header__container {
-        max-width: 900px;
+        max-width: 1100px;
         margin: 0 auto;
         padding: 30px 0;
         display: flex;
@@ -11,11 +11,7 @@
 
         .header__logo {
             max-width: 100px;
-            width: 100%;
-        
         }
-
-
 
         .navbar {
             display: flex;
@@ -23,15 +19,20 @@
             justify-content: center;
             gap: 20px;
 
-            .navbar__link { 
-                color: rgb(107, 104, 104);
+            .navbar__link {
+                color: white;
                 font-size: 18px;
                 font-weight: 700;
                 text-decoration: none;
-            }       
-
+            }
         }
-
     }
 
+    .login-state {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px 20px;
+        color: white;
+    }
 }

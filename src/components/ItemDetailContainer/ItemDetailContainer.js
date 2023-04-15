@@ -5,14 +5,13 @@ import ItemDetail from "../ItemDetail/ItemDetail"
 import { doc, getDoc } from "firebase/firestore"
 
 
-export const ItemDetailContainer = () => {
+const ItemDetailContainer = () => {
 
     const [item, setItem] = useState(null)
     const [loading, setLoading] = useState(true)
 
+    const { itemId } = useParams()
 
-    const {itemId} = useParams()
-    
     useEffect(() => {
         setLoading(true)
 
@@ -42,3 +41,5 @@ export const ItemDetailContainer = () => {
         </div>
     )
 }
+
+export default ItemDetailContainer
